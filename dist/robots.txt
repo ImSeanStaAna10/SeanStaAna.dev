@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://seansaintsdev.vercel.app/sitemap.xml
