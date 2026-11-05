@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://seandev.vercel.app/sitemap.xml
