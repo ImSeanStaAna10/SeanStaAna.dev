@@ -11,63 +11,84 @@ export interface SkillCategory {
 
 export const skillsData: SkillCategory[] = [
   {
-    title: "Frontend Development",
-    description: "Building responsive, accessible, and performant user interfaces.",
+    title: "Programming Languages",
+    description:
+      "Writing application logic and solving programming problems using multiple languages.",
     skills: [
-      { name: "React", proficiency: "Proficient" },
-      { name: "TypeScript", proficiency: "Proficient" },
-      { name: "JavaScript (ES6+)", proficiency: "Proficient" },
-      { name: "HTML5 / CSS3", proficiency: "Proficient" },
-      { name: "Tailwind CSS", proficiency: "Proficient" },
-      { name: "Vite", proficiency: "Intermediate" }
-    ]
+      { name: "C#", proficiency: "Proficient" },
+      { name: "Javascript", proficiency: "Proficient" },
+      { name: "Java", proficiency: "Intermediate" },
+      { name: "Python", proficiency: "Intermediate" },
+      { name: "TypeScript", proficiency: "Intermediate" },
+      { name: "SQL", proficiency: "Intermediate" },
+    ],
   },
   {
     title: "Backend Development",
-    description: "Developing robust APIs and server-side logic.",
+    description:
+      "Building server-side applications, RESTful APIs, and backend services.",
     skills: [
-      { name: "Node.js", proficiency: "Intermediate" },
-      { name: "Express.js", proficiency: "Intermediate" },
+      { name: "ASP.NET Core", proficiency: "Proficient" },
+      { name: "Spring Boot", proficiency: "Intermediate" },
+      { name: "Node.js", proficiency: "Proficient" },
+      { name: "Express.js", proficiency: "Proficient" },
+      { name: "FastAPI", proficiency: "Intermediate" },
       { name: "RESTful APIs", proficiency: "Proficient" },
-      { name: "Python", proficiency: "Familiar" }
-    ]
+    ],
+  },
+  {
+    title: "Frontend Development",
+    description:
+      "Developing responsive user interfaces and integrating frontend applications with backend services.",
+    skills: [
+      { name: "React", proficiency: "Intermediate" },
+      { name: "TypeScript", proficiency: "Proficient" },
+      { name: "HTML5", proficiency: "Intermediate" },
+      { name: "CSS3", proficiency: "Intermediate" },
+    ],
   },
   {
     title: "Database & Data Management",
-    description: "Structuring and querying relational and non-relational data.",
+    description:
+      "Working with relational databases and backend data management platforms.",
     skills: [
       { name: "PostgreSQL", proficiency: "Intermediate" },
+      { name: "Supabase", proficiency: "Intermediate" },
       { name: "SQL", proficiency: "Intermediate" },
-      { name: "MongoDB", proficiency: "Familiar" }
-    ]
+      { name: "phpMyAdmin", proficiency: "Familiar" },
+    ],
   },
   {
-    title: "Tools & Development Technologies",
-    description: "Utilizing modern developer toolchains and version control.",
+    title: "Machine Learning & Computer Vision",
+    description:
+      "Integrating machine learning and computer vision technologies into software applications.",
     skills: [
-      { name: "Git & GitHub", proficiency: "Proficient" },
-      { name: "VS Code", proficiency: "Proficient" },
-      { name: "Postman", proficiency: "Proficient" },
-      { name: "Vite", proficiency: "Proficient" }
-    ]
+      { name: "InsightFace", proficiency: "Intermediate" },
+      { name: "ONNX Runtime", proficiency: "Intermediate" },
+      { name: "OpenCV", proficiency: "Intermediate" },
+    ],
   },
   {
-    title: "DevOps & Cloud",
-    description: "Deploying and hosting applications with modern platforms.",
+    title: "DevOps & Cloud Technologies",
+    description:
+      "Managing application containers, deployment workflows, and continuous integration and delivery.",
     skills: [
-      { name: "Vercel", proficiency: "Proficient" },
-      { name: "GitHub Actions", proficiency: "Familiar" },
-      { name: "Netlify", proficiency: "Intermediate" }
-    ]
+      { name: "Docker", proficiency: "Intermediate" },
+      { name: "CI/CD", proficiency: "Intermediate" },
+      { name: "GitHub Actions", proficiency: "Intermediate" },
+      { name: "GitHub Container Registry", proficiency: "Intermediate" },
+      { name: "Bash Scripting", proficiency: "Proficient" },
+    ],
   },
   {
-    title: "Other Technical Skills",
-    description: "Core computer science principles and software engineering practices.",
+    title: "Tools & Software Engineering Practices",
+    description:
+      "Applying software engineering principles, architectural patterns, and modern development tools.",
     skills: [
-      { name: "Data Structures & Algorithms", proficiency: "Intermediate" },
-      { name: "Responsive Web Design", proficiency: "Proficient" },
-      { name: "UI/UX Principles", proficiency: "Intermediate" },
-      { name: "Debugging & Testing", proficiency: "Intermediate" }
-    ]
-  }
+      { name: "Object-Oriented Programming", proficiency: "Proficient" },
+      { name: "Clean Architecture", proficiency: "Intermediate" },
+      { name: "Figma", proficiency: "Intermediate" },
+      { name: "Codex", proficiency: "Familiar" },
+    ],
+  },
 ];
