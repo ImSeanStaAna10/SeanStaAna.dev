@@ -12,15 +12,26 @@ describe("PortfolioV2 Data Integrity Tests", () => {
 
   it("should have featured projects defined", () => {
     expect(projectsData.length).toBeGreaterThan(0);
+
     const featured = projectsData.filter((p) => p.featured);
+
     expect(featured.length).toBeGreaterThan(0);
   });
 
   it("should have skill categories defined", () => {
-    expect(skillsData.length).toBe(6);
+    expect(skillsData.length).toBe(7);
+
     skillsData.forEach((cat) => {
       expect(cat.title).toBeDefined();
+      expect(cat.description).toBeDefined();
       expect(cat.skills.length).toBeGreaterThan(0);
+
+      cat.skills.forEach((skill) => {
+        expect(skill.name).toBeDefined();
+        expect(["Familiar", "Intermediate", "Proficient"]).toContain(
+          skill.proficiency,
+        );
+      });
     });
   });
 });
