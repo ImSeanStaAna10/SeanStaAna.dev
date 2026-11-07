@@ -58,16 +58,7 @@ export const skillsData: SkillCategory[] = [
       { name: "phpMyAdmin", proficiency: "Familiar" },
     ],
   },
-  {
-    title: "Machine Learning & Computer Vision",
-    description:
-      "Integrating machine learning and computer vision technologies into software applications.",
-    skills: [
-      { name: "InsightFace", proficiency: "Intermediate" },
-      { name: "ONNX Runtime", proficiency: "Intermediate" },
-      { name: "OpenCV", proficiency: "Intermediate" },
-    ],
-  },
+
   {
     title: "DevOps & Cloud Technologies",
     description:
@@ -81,6 +72,30 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
+    title: "Testing & API Tools",
+    description:
+      "Testing backend APIs, validating endpoints, and ensuring software quality through automated tests.",
+    skills: [
+      { name: "Postman", proficiency: "Proficient" },
+      { name: "Swagger / OpenAPI", proficiency: "Intermediate" },
+      { name: "Vitest", proficiency: "Intermediate" },
+      { name: "xUnit (.NET)", proficiency: "Familiar" },
+    ],
+  },
+  {
+    title: "AI-Assisted & Agentic Development Tools",
+    description:
+      "Leveraging modern AI assistants, agentic workflows, and context protocols for advanced software engineering.",
+    skills: [
+      { name: "Cline", proficiency: "Proficient" },
+      { name: "Antigravity", proficiency: "Proficient" },
+      { name: "Gemini Models", proficiency: "Proficient" },
+      { name: "OpenAI Codex", proficiency: "Intermediate" },
+      { name: "OmniRoute", proficiency: "Intermediate" },
+      { name: "Model Context Protocol (MCP)", proficiency: "Intermediate" },
+    ],
+  },
+  {
     title: "Tools & Software Engineering Practices",
     description:
       "Applying software engineering principles, architectural patterns, and modern development tools.",
@@ -88,7 +103,6 @@ export const skillsData: SkillCategory[] = [
       { name: "Object-Oriented Programming", proficiency: "Proficient" },
       { name: "Clean Architecture", proficiency: "Intermediate" },
       { name: "Figma", proficiency: "Intermediate" },
-      { name: "Codex", proficiency: "Familiar" },
     ],
   },
 ];

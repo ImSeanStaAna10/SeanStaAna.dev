@@ -5,7 +5,7 @@ import { skillsData } from "../data/skills";
 
 describe("PortfolioV2 Data Integrity Tests", () => {
   it("should contain correct profile information", () => {
-    expect(profileData.name).toBe("Sean Sta Ana");
+    expect(profileData.name).toBe("Sean Chandrick B. Sta Ana");
     expect(profileData.title).toBe("Aspiring Software Engineer");
     expect(profileData.email).toBeDefined();
   });
@@ -19,7 +19,7 @@ describe("PortfolioV2 Data Integrity Tests", () => {
   });
 
   it("should have skill categories defined", () => {
-    expect(skillsData.length).toBe(7);
+    expect(skillsData.length).toBe(8);
 
     skillsData.forEach((cat) => {
       expect(cat.title).toBeDefined();
