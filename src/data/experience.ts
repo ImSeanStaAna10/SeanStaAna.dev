@@ -15,41 +15,56 @@ export interface ExperienceItem {
 export const experienceData: ExperienceItem[] = [
   {
     id: "exp-1",
-    title: "Software Engineering Intern",
-    organization: "Tech Solutions Inc.",
+    title: "Photography Assistant and Photo File Organizer",
+    organization: "Cover and Pages Corp.",
     type: "Experience",
-    startDate: "Jun 2025",
-    endDate: "Aug 2025",
+    startDate: "2025",
+    endDate: "2026",
     ongoing: false,
-    description: "Contributed to frontend feature development and API integration for enterprise web applications.",
+    description: "Organized digital photo files and assisted with photography equipment operations.",
     responsibilities: [
-      "Developed reusable React components using TypeScript and Tailwind CSS.",
-      "Collaborated with senior engineers in code reviews and sprint planning.",
-      "Optimized REST API data fetching, reducing page load latency by 20%."
+      "Organized JPEG and CR2 photo files for more than 500 students per day.",
+      "Assisted with photography equipment setup and field operations."
     ],
     achievements: [
-      "Successfully delivered a customer feedback widget utilized by 5,000+ daily active users.",
-      "Recognized for clean code practices and comprehensive test coverage."
+      "Managed large-scale digital asset sorting efficiently under tight daily schedules."
     ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "REST APIs", "Git"]
+    technologies: ["Digital Asset Management", "Photography Equipment"]
+  },
+  {
+    id: "exp-2",
+    title: "Customer Service Crew",
+    organization: "McDonald's (Venice Grand Canal Mall)",
+    type: "Experience",
+    startDate: "2023",
+    endDate: "2023",
+    ongoing: false,
+    description: "Provided customer service and supported daily restaurant operations.",
+    responsibilities: [
+      "Delivered friendly and efficient customer service.",
+      "Supported daily restaurant operations as a crew member."
+    ],
+    achievements: [
+      "Maintained high service standards in a fast-paced environment."
+    ],
+    technologies: ["Customer Service", "Operations"]
   },
   {
     id: "edu-1",
     title: "B.S. in Computer Science",
-    organization: "University of Technology",
+    organization: "Taguig City University",
     type: "Education",
     startDate: "2023",
-    endDate: "Present",
+    endDate: "2027",
     ongoing: true,
-    description: "Focusing on software engineering principles, algorithms, data structures, and web technologies.",
+    description: "Focusing on software engineering principles, algorithms, data structures, and modern web technologies.",
     responsibilities: [
-      "Core coursework in Data Structures, Algorithms, Database Management, and Operating Systems.",
-      "Led team projects for software engineering capstone courses."
+      "Core coursework in Computer Science, Data Structures, Algorithms, and Software Engineering."
     ],
     achievements: [
-      "Dean's List honoree for consecutive academic semesters.",
-      "President of the Student Coding Club."
+      "Consistent academic progress toward Bachelor of Science in Computer Science."
     ],
-    technologies: ["Python", "Java", "JavaScript", "SQL", "Git"]
+    technologies: ["Java", "C#", "Python", "JavaScript", "TypeScript", "SQL"]
   }
 ];
+
