@@ -1,3 +1,6 @@
+import AppConCertPDF from "../assets/AppConWebinar.pdf";
+import AppConCertPNG from "../assets/AppConWebinar.png";
+
 export interface CertificationItem {
   id: string;
   title: string;
@@ -6,6 +9,7 @@ export interface CertificationItem {
   credentialId?: string;
   verificationUrl: string;
   previewImage: string;
+  certificateUrl: string;
 }
 
 export const certificationsData: CertificationItem[] = [
@@ -15,8 +19,7 @@ export const certificationsData: CertificationItem[] = [
     issuer: "OTIS Philippines Inc.",
     dateIssued: "November 22, 2024",
     verificationUrl: "https://seansaintsdev.vercel.app/",
-    previewImage:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
+    previewImage: AppConCertPNG,
+    certificateUrl: AppConCertPDF,
   },
 ];
-
