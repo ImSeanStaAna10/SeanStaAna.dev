@@ -9,6 +9,7 @@ export interface Profile {
   email: string;
   phone: string;
   github: string;
+  githubUsername: string;
   linkedin: string;
   location: string;
 }
@@ -26,6 +27,7 @@ export const profileData: Profile = {
   email: "seanstaana0510@gmail.com",
   phone: "+63 953 817 0047",
   github: "https://github.com/ImSeanStaAna10",
+  githubUsername: "ImSeanStaAna10",
   linkedin: "https://www.linkedin.com/in/sean-chandrick-sta-ana-3ab405252",
   location: "Taguig City, Philippines",
 };
