@@ -1,83 +1,36 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
+import { ArrowDown, ArrowDownRight, ArrowUpRight, CodeXml, Github, Hand, Linkedin, MapPin } from 'lucide-react';
 import { profileData } from '../../data/profile';
 import { availabilityData } from '../../data/availability';
 
-export const Hero: React.FC = () => {
-  return (
-    <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-emerald-50/50 to-transparent dark:from-emerald-950/20 dark:to-transparent">
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Content */}
-        <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-          {/* Availability Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-semibold shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            {availabilityData.status} — {availabilityData.message}
-          </div>
-
-          <div className="space-y-2">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Hi, I'm <span className="text-emerald-600 dark:text-emerald-400">{profileData.name}</span>
-            </h1>
-            <p className="text-xl sm:text-2xl font-semibold text-slate-700 dark:text-slate-300">
-              {profileData.title}
-            </p>
-          </div>
-
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0">
-            {profileData.tagline} {profileData.summary}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-lg shadow-emerald-600/20 transition-all hover:scale-[1.02]"
-            >
-              Explore Projects
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="#cv"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium transition-colors"
-            >
-              <Download className="w-4 h-4" />
-              View CV
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-emerald-600/30 hover:border-emerald-600 text-emerald-700 dark:text-emerald-400 font-medium transition-colors"
-            >
-              Contact Me
-            </a>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center justify-center lg:justify-start gap-4 pt-4 text-slate-600 dark:text-slate-400">
-            <a href={profileData.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-600 transition-colors">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-600 transition-colors">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href={`mailto:${profileData.email}`} aria-label="Email Contact" className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-600 transition-colors">
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
+export const Hero: React.FC = () => (
+  <section className="hero site-container" aria-labelledby="hero-heading">
+    <div className="hero-grid">
+      <div className="hero-copy">
+        <div className="availability"><span className="status-dot" />{availabilityData.status}</div>
+        <p className="hero-intro">Hello, I'm Sean Sta Ana <Hand size={24} aria-hidden="true" /></p>
+        <h1 id="hero-heading">Thoughtful code.<br /><span>Real-world</span><br />impact.</h1>
+        <p className="hero-description">An aspiring software engineer turning complex problems into useful, reliable applications. Building across the full stack, always learning along the way.</p>
+        <div className="hero-actions">
+          <a href="#projects" className="button button-primary">Explore my work <ArrowDownRight size={20} /></a>
+          <a href="#contact" className="button button-quiet">Let's connect <ArrowUpRight size={20} /></a>
         </div>
-
-        {/* Right Photo Frame */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 group">
-            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-600/30 to-transparent mix-blend-overlay z-10 pointer-events-none"></div>
-            <img
-              src={profileData.avatarUrl}
-              alt={profileData.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
+        <div className="hero-socials">
+          <span>Find me on</span>
+          <a href={profileData.github} target="_blank" rel="noopener noreferrer"><Github size={20} /> GitHub <ArrowUpRight size={18} /></a>
+          <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={20} /> LinkedIn <ArrowUpRight size={18} /></a>
         </div>
       </div>
-    </section>
-  );
-};
+      <div className="hero-visual">
+        <div className="portrait-topline"><span>THE PERSON BEHIND THE CODE</span><span>01 / INTRO</span></div>
+        <div className="portrait-frame">
+          <img src={profileData.avatarUrl} alt={profileData.name} width="800" height="800" />
+          <span className="portrait-corner" aria-hidden="true"><ArrowUpRight size={32} strokeWidth={1.8} /></span>
+        </div>
+        <div className="portrait-caption"><div><strong>Sean Chandrick B. Sta Ana</strong><span>{profileData.title}</span></div><span className="portrait-symbol" aria-hidden="true"><CodeXml size={28} /></span></div>
+        <div className="location-line"><MapPin size={18} /> {profileData.location}<span>LET'S BUILD SOMETHING GOOD.</span></div>
+      </div>
+    </div>
+    <div className="hero-bottom"><a href="#projects"><ArrowDown size={18} /> Scroll to explore</a><p>FULL STACK DEVELOPMENT <span>/</span> BACKEND SYSTEMS <span>/</span> AI INTEGRATION</p></div>
+  </section>
+);

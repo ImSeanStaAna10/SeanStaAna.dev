@@ -1,117 +1,42 @@
-import React, { useState } from 'react';
-import { projectsData, Project } from '../../data/projects';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, ArrowUpRight, Github, Layers, ScanFace, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { projectsData } from '../../data/projects';
 
-export const Projects: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-
-  const categories = ['All', 'Full Stack', 'Frontend', 'Backend', 'AI & Tools'];
-
-  const filteredProjects = selectedCategory === 'All'
-    ? projectsData
-    : projectsData.filter(p => p.category === selectedCategory);
-
-  return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center space-y-3 mb-12">
-        <h2 className="text-3xl sm:text-4xl font-heading font-bold text-slate-900 dark:text-white">
-          Projects & Portfolio
-        </h2>
-        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Practical applications and software projects demonstrating technical capability.
-        </p>
-      </div>
-
-      {/* Category Filters */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-              selectedCategory === cat
-                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
-                : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-emerald-500/50'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project: Project) => (
-          <div
-            key={project.slug}
-            className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all flex flex-col justify-between group"
-          >
-            <div>
-              <div className="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
-                <img
-                  src={project.previewImage}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-medium">
-                  {project.category}
-                </div>
-              </div>
-              <div className="p-6 space-y-3">
-                <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">
-                  {project.shortDescription}
-                </p>
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {project.technologies.map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+export const Projects: React.FC = () => (
+  <section id="projects" className="section site-container" aria-labelledby="projects-heading">
+    <div className="section-heading">
+      <div><p className="eyebrow"><span>01</span> SELECTED WORK</p><h2 id="projects-heading">Built to solve.<br /><span>Designed to matter.</span></h2></div>
+      <p>A closer look at the ideas I've brought to life, from backend architecture to the experience on screen.</p>
+    </div>
+    <div className="project-list">
+      {projectsData.map((project, index) => (
+        <article key={project.slug} className="featured-project">
+          <Link to={'/projects/' + project.slug} className="project-image-link" aria-label={'Explore ' + project.title}>
+            <div className="project-window-bar"><span className="window-dots" aria-hidden="true"><i /><i /><i /></span><span>PROJECT SPOTLIGHT</span><ArrowUpRight size={20} /></div>
+            <img src={project.previewImage} alt="Attendance management dashboard and face recognition scanner interface" width="1672" height="941" loading="lazy" />
+            <span className="image-link-caption">A real look at the application <ArrowUpRight size={20} /></span>
+          </Link>
+          <div className="project-content">
+            <div className="project-meta"><span>PROJECT {String(index + 1).padStart(2, '0')}</span><span className="tag">{project.category}</span>{project.projectStage && <span className="tag tag-accent">{project.projectStage}</span>}</div>
+            <h3>{project.slug === 'automated-attendance-management-system' ? 'Attendance, made intelligent.' : project.title}</h3>
+            <p className="project-subtitle">{project.title}</p>
+            <p className="muted">{project.shortDescription}</p>
+            <div className="project-capabilities">
+              <span><ScanFace size={20} /> Face recognition</span><span><ShieldCheck size={20} /> Anti-spoofing</span><span><Layers size={20} /> Role-based access</span>
             </div>
-
-            <div className="p-6 pt-0 flex items-center justify-between border-t border-slate-100 dark:border-slate-800/60 mt-4">
-              <Link
-                to={`/projects/${project.slug}`}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
-              >
-                View Details
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <div className="flex items-center gap-2">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub Repository"
-                  className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Live Demo"
-                    className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                )}
+            <div className="tag-list">{['Spring Boot', 'React', 'FastAPI', 'PostgreSQL', 'Docker'].filter(tech => project.technologies.includes(tech)).map(tech => <span className="tag" key={tech}>{tech}</span>)}</div>
+            <div className="project-actions">
+              <Link to={'/projects/' + project.slug} className="text-link">Explore case study <ArrowRight size={20} /></Link>
+              <div>
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="icon-button" aria-label={'GitHub repository for ' + project.title}><Github size={20} /></a>
+                {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-link secondary-link">Live demo <ArrowUpRight size={20} /></a>}
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+        </article>
+      ))}
+    </div>
+    <a className="more-work-link" href="https://github.com/ImSeanStaAna10?tab=repositories" target="_blank" rel="noopener noreferrer">More experiments and projects on GitHub <ArrowUpRight size={20} /></a>
+  </section>
+);

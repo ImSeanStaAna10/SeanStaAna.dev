@@ -1,37 +1,43 @@
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="./public/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sean Sta Ana — Aspiring Software Engineer | Portfolio</title>
-    <meta name="description" content="Personal portfolio and software engineering projects of Sean Sta Ana. Aspiring software engineer specializing in React, TypeScript, and modern web development." />
-    
-    <!-- Open Graph Metadata -->
-    <meta property="og:title" content="Sean Sta Ana — Aspiring Software Engineer" />
-    <meta property="og:description" content="Explore my projects, technical skills, and professional journey in software engineering." />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      (function () {
+        var saved;
+        try { saved = localStorage.getItem('portfolio_theme'); } catch (error) {}
+        var dark = saved === 'dark' || (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', dark ? '#060b08' : '#ffffff');
+      })();
+    </script>
+    <title>Sean Sta Ana | Aspiring Software Engineer</title>
+    <meta name="description" content="Sean Sta Ana is an aspiring software engineer and Computer Science student building full-stack applications, backend systems, and machine learning integrations." />
+    <meta property="og:title" content="Sean Sta Ana | Aspiring Software Engineer" />
+    <meta property="og:description" content="Thoughtful code. Real-world impact. Explore my projects, technical toolkit, and journey in software engineering." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://seandev.vercel.app" />
-
-    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Sean Sta Ana",
+        "name": "Sean Chandrick B. Sta Ana",
         "jobTitle": "Aspiring Software Engineer",
         "url": "https://seandev.vercel.app",
         "sameAs": [
-          "https://github.com",
-          "https://linkedin.com"
+          "https://github.com/ImSeanStaAna10",
+          "https://www.linkedin.com/in/sean-chandrick-sta-ana-3ab405252"
         ],
-        "knowsAbout": ["React", "TypeScript", "JavaScript", "Node.js", "Web Development", "Software Engineering"]
+        "knowsAbout": ["React", "TypeScript", "C#", "Java", "Python", "Software Engineering"]
       }
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>

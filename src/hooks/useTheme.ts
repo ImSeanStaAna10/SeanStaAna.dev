@@ -11,32 +11,22 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem('portfolio_theme');
-    if (saved === 'light' || saved === 'dark') return saved;
+    try {
+      const saved = localStorage.getItem('portfolio_theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch { /* The theme remains usable when browser storage is blocked. */ }
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('portfolio_theme', theme);
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#060b08' : '#ffffff');
+    try { localStorage.setItem('portfolio_theme', theme); } catch { /* Theme persistence is optional. */ }
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
-  };
+  const toggleTheme = () => setTheme(previous => previous === 'light' ? 'dark' : 'light');
 
-  const value = { theme, toggleTheme };
-
-  return React.createElement(
-    ThemeContext.Provider,
-    { value },
-    children
-  );
+  return React.createElement(ThemeContext.Provider, { value: { theme, toggleTheme } }, children);
 };
 
 export const useTheme = () => {
@@ -44,4 +34,3 @@ export const useTheme = () => {
   if (!context) throw new Error('useTheme must be used within a ThemeProvider');
   return context;
 };
-

@@ -4,23 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        emerald: {
-          50: "#ECFDF5",
-          100: "#D1FAE5",
-          200: "#A7F3D0",
-          300: "#6EE7B7",
-          400: "#34D399",
-          500: "#10B981", 
-          600: "#059669",
-          700: "#047857",
-          800: "#065F46",
-          900: "#064E3B",
-          950: "#022C22",
+        brand: {
+          50: "#f1f6f3",
+          100: "#d9eee1",
+          200: "#bad8c6",
+          300: "#8fcdab",
+          400: "#58dca0",
+          500: "#04aa6d",
+          600: "#008f5b",
+          700: "#007a4d",
+          800: "#00643f",
+          900: "#163c2a",
+          950: "#0d2016",
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Plus Jakarta Sans", "sans-serif"],
+        sans: ["Source Sans 3", "Segoe UI", "Arial", "sans-serif"],
+        heading: ["Source Sans 3", "Segoe UI", "Arial", "sans-serif"],
       },
     },
   },

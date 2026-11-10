@@ -11,22 +11,21 @@ import { CvSection } from './features/cv/CvSection';
 import { Contact } from './features/contact/Contact';
 import { Footer } from './components/layout/Footer';
 
-export const MainPortfolio: React.FC = () => {
-  return (
-    <div className="min-h-screen flex flex-col justify-between bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-emerald-500 selection:text-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <GithubDashboard />
-        <Experience />
-        <Certifications />
-        <CvSection />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
-  );
-};
+export const MainPortfolio: React.FC = () => (
+  <div className="portfolio-shell">
+    <a className="skip-link" href="#main-content">Skip to content</a>
+    <Navbar />
+    <main id="main-content" tabIndex={-1}>
+      <Hero />
+      <Projects />
+      <About />
+      <Skills />
+      <Experience />
+      <GithubDashboard />
+      <Certifications />
+      <CvSection />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
+);
