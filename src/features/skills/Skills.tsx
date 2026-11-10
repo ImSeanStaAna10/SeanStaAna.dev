@@ -1,49 +1,91 @@
 import React from 'react';
-import { skillsData } from '../../data/skills';
-import { CheckCircle2 } from 'lucide-react';
+import {
+  BrainCircuit,
+  CloudCog,
+  CodeXml,
+  Database,
+  FlaskConical,
+  PanelsTopLeft,
+  ServerCog,
+  SquareTerminal,
+  Star,
+} from 'lucide-react';
+import { skillsData, type SkillItem } from '../../data/skills';
 
-export const Skills: React.FC = () => {
-  return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-50/50 dark:bg-slate-900/30 rounded-3xl my-12">
-      <div className="text-center space-y-3 mb-16">
-        <h2 className="text-3xl sm:text-4xl font-heading font-bold text-slate-900 dark:text-white">
-          Skills & Technologies
-        </h2>
-        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Technologies and tools I leverage to build modern web applications.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skillsData.map((category, idx) => (
-          <div
-            key={idx}
-            className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:border-emerald-500/50 transition-all"
-          >
-            <div>
-              <h3 className="text-xl font-heading font-semibold text-slate-900 dark:text-white mb-2">
-                {category.title}
-              </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
-                {category.description}
-              </p>
-              <ul className="space-y-3">
-                {category.skills.map((skill, sIdx) => (
-                  <li key={sIdx} className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-slate-800 dark:text-slate-200 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-                      {skill.name}
-                    </span>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-medium">
-                      {skill.proficiency}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+const icons = [CodeXml, ServerCog, PanelsTopLeft, Database, CloudCog, FlaskConical, BrainCircuit, SquareTerminal];
+const experienceStars: Record<SkillItem['proficiency'], number> = {
+  Familiar: 1,
+  Intermediate: 2,
+  Proficient: 3,
 };
+
+function StarRating({ level }: { level: SkillItem['proficiency'] }) {
+  const count = experienceStars[level];
+
+  return (
+    <span className="skill-rating" role="img" aria-label={level + ', ' + count + ' of 3 stars'}>
+      {[1, 2, 3].map(star => (
+        <Star
+          key={star}
+          size={18}
+          strokeWidth={1.8}
+          className={star <= count ? 'rating-star-filled' : 'rating-star-empty'}
+          aria-hidden="true"
+        />
+      ))}
+    </span>
+  );
+}
+
+export const Skills: React.FC = () => (
+  <section id="skills" className="section site-container" aria-labelledby="skills-heading">
+    <div className="section-heading">
+      <div>
+        <p className="eyebrow"><span>03</span> THE TOOLKIT</p>
+        <h2 id="skills-heading">The right tools.<br /><span>A thoughtful approach.</span></h2>
+      </div>
+      <p>
+        From the first API endpoint to the final interface. A toolkit built through
+        coursework, personal projects, and hands-on learning.
+      </p>
+    </div>
+
+    <div className="skills-legend" role="group" aria-label="Star rating guide">
+      <p>Hands-on experience, at a glance.</p>
+      <ul>
+        {(['Familiar', 'Intermediate', 'Proficient'] as const).map(level => (
+          <li key={level}>
+            <StarRating level={level} />
+            <span>{level}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="skills-grid">
+      {skillsData.map((category, index) => {
+        const Icon = icons[index] || CodeXml;
+        const headingId = 'skill-category-' + index;
+
+        return (
+          <article key={category.title} className="skill-group" aria-labelledby={headingId}>
+            <div className="skill-group-top">
+              <span className="skill-group-icon"><Icon size={28} strokeWidth={1.8} aria-hidden="true" /></span>
+              <span className="skill-group-number">{String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <h3 id={headingId}>{category.title}</h3>
+            <p className="muted">{category.description}</p>
+            <ul className="skill-list" aria-label={category.title + ' skills'}>
+              {category.skills.map(skill => (
+                <li key={skill.name}>
+                  <span className="skill-name">{skill.name}</span>
+                  <StarRating level={skill.proficiency} />
+                </li>
+              ))}
+            </ul>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+);

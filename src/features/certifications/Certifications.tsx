@@ -1,81 +1,10 @@
-import { ExternalLink } from "lucide-react";
-import React from "react";
-import { certificationsData } from "../../data/certifications";
+import React from 'react';
+import { ArrowUpRight, Award } from 'lucide-react';
+import { certificationsData } from '../../data/certifications';
 
-export const Certifications: React.FC = () => {
-  return (
-    <section
-      id="certifications"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-50/50 dark:bg-slate-900/30 rounded-3xl my-12"
-    >
-      {/* Section Header */}
-      <div className="text-center space-y-3 mb-16">
-        <h2 className="text-3xl sm:text-4xl font-heading font-bold text-slate-900 dark:text-white">
-          Certifications & Achievements
-        </h2>
-
-        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Recognized credentials and professional development milestones.
-        </p>
-      </div>
-
-      {/* Certifications Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {certificationsData.map((cert) => (
-          <div
-            key={cert.id}
-            className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:border-emerald-500/50 transition-all flex flex-col justify-between group"
-          >
-            <div>
-              {/* Certificate Preview */}
-              <div className="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                <img
-                  src={cert.previewImage}
-                  alt={cert.title}
-                  loading="lazy"
-                  className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                  onError={(event) => {
-                    console.error(
-                      "Failed to load certificate preview:",
-                      cert.previewImage,
-                    );
-                    event.currentTarget.style.display = "none";
-                  }}
-                />
-
-                <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-medium shadow-sm">
-                  {cert.issuer}
-                </div>
-              </div>
-
-              {/* Certificate Details */}
-              <div className="p-6 space-y-2">
-                <h3 className="text-lg font-heading font-bold text-slate-900 dark:text-white">
-                  {cert.title}
-                </h3>
-
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  Issued {cert.dateIssued}
-                  {cert.credentialId && ` • ID: ${cert.credentialId}`}
-                </p>
-              </div>
-            </div>
-
-            {/* Certificate Actions */}
-            <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-800/60 mt-4">
-              <a
-                href={cert.certificateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:underline pt-4"
-              >
-                View Certificate
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+export const Certifications: React.FC = () => (
+  <section id="certifications" className="section site-container certifications-section" aria-labelledby="certifications-heading">
+    <div className="section-heading compact-heading"><div><p className="eyebrow"><span>06</span> ALWAYS LEARNING</p><h2 id="certifications-heading">Learning beyond<br /><span>the classroom.</span></h2></div><p>Making room for new perspectives, practical knowledge, and professional development.</p></div>
+    {certificationsData.map(cert => <article key={cert.id} className="certificate-row"><a href={cert.certificateUrl} target="_blank" rel="noopener noreferrer" className="certificate-preview" aria-label={'View ' + cert.title}><img src={cert.previewImage} alt={cert.title + ' from ' + cert.issuer} width="500" height="350" loading="lazy" /></a><div className="certificate-copy"><p className="eyebrow"><Award size={20} /> PARTICIPATION & DEVELOPMENT</p><h3>{cert.title}</h3><p className="muted">{cert.issuer} <span aria-hidden="true">/</span> {cert.dateIssued}</p>{cert.credentialId && <p className="muted">Credential ID: {cert.credentialId}</p>}<a href={cert.certificateUrl} target="_blank" rel="noopener noreferrer" className="text-link">View certificate <ArrowUpRight size={20} /></a></div></article>)}
+  </section>
+);
