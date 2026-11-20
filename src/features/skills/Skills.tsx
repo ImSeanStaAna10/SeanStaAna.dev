@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatedIcon } from '../../components/AnimatedIcon';
 import {
   BrainCircuit,
   CloudCog,
@@ -41,7 +42,7 @@ export const Skills: React.FC = () => (
   <section id="skills" className="section site-container" aria-labelledby="skills-heading">
     <div className="section-heading">
       <div>
-        <p className="eyebrow"><span>03</span> THE TOOLKIT</p>
+        <p className="eyebrow"><AnimatedIcon icon={CodeXml} /> THE TOOLKIT</p>
         <h2 id="skills-heading">The right tools.<br /><span>A thoughtful approach.</span></h2>
       </div>
       <p>
@@ -70,8 +71,8 @@ export const Skills: React.FC = () => (
         return (
           <article key={category.title} className="skill-group" aria-labelledby={headingId}>
             <div className="skill-group-top">
-              <span className="skill-group-icon"><Icon size={28} strokeWidth={1.8} aria-hidden="true" /></span>
-              <span className="skill-group-number">{String(index + 1).padStart(2, '0')}</span>
+              <span className="skill-group-icon"><AnimatedIcon icon={Icon} size={28} variant={index % 3 === 0 ? 'draw' : index % 3 === 1 ? 'pulse' : 'float'} /></span>
+              <span className="skill-group-label">{category.skills.length} tools</span>
             </div>
             <h3 id={headingId}>{category.title}</h3>
             <p className="muted">{category.description}</p>

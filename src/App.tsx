@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './hooks/useTheme';
+import { MotionProvider } from './hooks/useMotionPreference';
 import { MainPortfolio } from './MainPortfolio';
 import { ProjectDetail } from './ProjectDetail';
 import { ScrollExperience } from './components/layout/ScrollExperience';
@@ -22,7 +23,7 @@ function RouteEffects() {
         const target = document.getElementById(id);
         if (target) {
           if (!target.hasAttribute('tabindex')) target.tabIndex = -1;
-          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('motion-paused');
           target.scrollIntoView({ behavior: samePage && !reduced ? 'smooth' : 'instant' as ScrollBehavior });
           target.focus({ preventScroll: true });
         }
@@ -38,7 +39,7 @@ function RouteEffects() {
 
 export function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider><MotionProvider>
       <BrowserRouter>
         <RouteEffects />
         <ScrollExperience />
@@ -48,7 +49,7 @@ export function App() {
           <Route path="*" element={<MainPortfolio />} />
         </Routes>
       </BrowserRouter>
-    </ThemeProvider>
+    </MotionProvider></ThemeProvider>
   );
 }
 export default App;
