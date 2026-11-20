@@ -7,6 +7,7 @@ const originalAnimate = Object.getOwnPropertyDescriptor(Element.prototype, 'anim
 
 afterEach(() => {
   cleanup();
+  document.documentElement.classList.remove('motion-paused');
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
   if (originalAnimate) Object.defineProperty(Element.prototype, 'animate', originalAnimate);
@@ -79,4 +80,19 @@ it('stops a reveal immediately when its content receives keyboard focus', () => 
   view.target.focus();
   expect(view.target).toHaveFocus();
   expect(view.cancel).toHaveBeenCalled();
+});
+it('cancels active reveals on manual pause and safely resumes them', () => {
+  const view = mountExperience();
+  view.intersect();
+  expect(view.animate).toHaveBeenCalledTimes(1);
+  document.documentElement.classList.add('motion-paused');
+  window.dispatchEvent(new Event('portfolio-motion-change'));
+  expect(view.cancel).toHaveBeenCalled();
+  expect(view.intersection.disconnect).toHaveBeenCalled();
+  view.intersect();
+  expect(view.animate).toHaveBeenCalledTimes(1);
+  document.documentElement.classList.remove('motion-paused');
+  window.dispatchEvent(new Event('portfolio-motion-change'));
+  view.intersect();
+  expect(view.animate).toHaveBeenCalledTimes(2);
 });

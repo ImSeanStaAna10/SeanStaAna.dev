@@ -3,16 +3,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/Logo.png" />
+    <link rel="icon" type="image/png" href="/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f7faf8" />
     <script>
       (function () {
         var saved;
         try { saved = localStorage.getItem('portfolio_theme'); } catch (error) {}
         var dark = saved === 'dark' || (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
         document.documentElement.classList.toggle('dark', dark);
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', dark ? '#060b08' : '#ffffff');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', dark ? '#101a17' : '#f7faf8');
       })();
     </script>
     <title>Sean Sta Ana | Aspiring Software Engineer</title>
@@ -37,7 +37,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>

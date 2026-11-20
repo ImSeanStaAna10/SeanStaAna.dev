@@ -1,5 +1,5 @@
+import { AnimatedIcon } from '../AnimatedIcon';
 import {
-  ArrowUpRight,
   BriefcaseBusiness,
   ChevronRight,
   FileText,
@@ -116,18 +116,18 @@ export const Navbar: React.FC = () => {
       <div className="site-container nav-inner">
         <Link
           to="/"
-          className="flex shrink-0 items-center gap-2"
+          className="brand studio-brand"
           aria-label="Sean Sta Ana home"
         >
           <img
             src={logo}
             alt=""
-            className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
+            className="brand-logo"
           />
 
-          <span className="whitespace-nowrap text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
+          <span className="brand-wordmark">
             seansaints
-            <span className="text-[#65B87D] dark:text-[#83D99A]">.dev</span>
+            <span className="brand-dot">.dev</span>
           </span>
         </Link>
 
@@ -158,9 +158,9 @@ export const Navbar: React.FC = () => {
             }
           >
             {theme === "dark" ? (
-              <Sun size={22} aria-hidden="true" />
+              <AnimatedIcon icon={Sun} variant="spin" />
             ) : (
-              <Moon size={22} aria-hidden="true" />
+              <AnimatedIcon icon={Moon} variant="wave" />
             )}
           </button>
           <a
@@ -169,8 +169,8 @@ export const Navbar: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FileText size={20} aria-hidden="true" /> Resume{" "}
-            <ArrowUpRight size={18} aria-hidden="true" />
+            <AnimatedIcon icon={FileText} size={20} /> Resume{" "}
+
           </a>
           <button
             ref={toggleRef}
@@ -226,7 +226,7 @@ export const Navbar: React.FC = () => {
                 aria-current={active === id ? "location" : undefined}
               >
                 <span className="nav-icon">
-                  <Icon size={24} aria-hidden="true" />
+                  <AnimatedIcon icon={Icon} size={24} />
                 </span>
                 <span>{name}</span>
                 <ChevronRight
@@ -246,7 +246,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setOpen(false)}
             >
               <FileText size={22} aria-hidden="true" /> View resume{" "}
-              <ArrowUpRight size={20} aria-hidden="true" />
+
             </a>
             <button
               className="drawer-theme"
@@ -258,9 +258,9 @@ export const Navbar: React.FC = () => {
               }
             >
               {theme === "dark" ? (
-                <Sun size={22} aria-hidden="true" />
+                <AnimatedIcon icon={Sun} variant="spin" />
               ) : (
-                <Moon size={22} aria-hidden="true" />
+                <AnimatedIcon icon={Moon} variant="wave" />
               )}
               <span>
                 {theme === "dark" ? "Light appearance" : "Dark appearance"}

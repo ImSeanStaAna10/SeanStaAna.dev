@@ -76,12 +76,12 @@ export function ScrollExperience() {
 
     const reveal = () => {
       stop();
-      if (preference.matches || typeof IntersectionObserver !== 'function') return;
+      if (preference.matches || document.documentElement.classList.contains('motion-paused') || typeof IntersectionObserver !== 'function') return;
       const seen = new WeakSet<HTMLElement>();
 
       const activeGeneration = generation;
       observer = new IntersectionObserver(entries => {
-        if (preference.matches || activeGeneration !== generation) return;
+        if (preference.matches || document.documentElement.classList.contains('motion-paused') || activeGeneration !== generation) return;
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
           const element = entry.target as HTMLElement;
@@ -136,10 +136,12 @@ export function ScrollExperience() {
 
     reveal();
     preference.addEventListener('change', reveal);
+    window.addEventListener('portfolio-motion-change', reveal);
     main.addEventListener('focusin', keepFocusVisible);
     return () => {
       stop();
       preference.removeEventListener('change', reveal);
+      window.removeEventListener('portfolio-motion-change', reveal);
       main.removeEventListener('focusin', keepFocusVisible);
     };
   }, [pathname]);
