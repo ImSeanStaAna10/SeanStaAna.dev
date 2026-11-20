@@ -12,7 +12,7 @@
         try { saved = localStorage.getItem('portfolio_theme'); } catch (error) {}
         var dark = saved === 'dark' || (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
         document.documentElement.classList.toggle('dark', dark);
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', dark ? '#101a17' : '#f7faf8');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', dark ? '#000000' : '#f7faf8');
       })();
     </script>
     <title>Sean Sta Ana | Aspiring Software Engineer</title>
